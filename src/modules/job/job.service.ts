@@ -42,6 +42,7 @@ export class JobService {
         const job = this.jobRepo.create({
             name: jobParam.name,
             description: jobParam.description,
+            price: jobParam.price,
             owner: owner,
             status: 'listing'
         })
@@ -61,6 +62,7 @@ export class JobService {
 
         job.name = jobParam.name ?? job.name
         job.description = jobParam.description ?? job.description
+        job.price = jobParam.price ?? job.price
         await this.jobRepo.save(job)
 
         return job

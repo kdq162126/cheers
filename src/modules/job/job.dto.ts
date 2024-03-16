@@ -1,11 +1,13 @@
-import { IsOptional, IsString, IsUrl } from 'class-validator';
+import { IsNumber, IsOptional, IsString, IsUrl } from 'class-validator';
 
 export class createJobDto {
-    @IsOptional()
     @IsString()
-    name?: string;
+    name: string;
 
     @IsOptional()
     @IsString()
     description?: string;
+
+    @IsNumber()
+    price: number;
 }
