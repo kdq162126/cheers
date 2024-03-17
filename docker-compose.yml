@@ -11,7 +11,7 @@ services:
       restart_policy:
         condition: on-failure
     volumes:
-      - ./:/app
+      - .:/app
 
   db:
     image: mysql:5.7
