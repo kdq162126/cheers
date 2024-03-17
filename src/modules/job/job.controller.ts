@@ -19,21 +19,21 @@ export class JobController {
         return this.jobService.jobDetail(id)
     }
 
-    // @UseGuards(AuthGuard)
+    @UseGuards(AuthGuard)
     @Post('')
     createJob(@Request() req, @Body() jobParam?: createJobDto) {
         const userId = req.user ? req.user.uid : null;
         return this.jobService.createJob(jobParam, userId)
     }
 
-    // @UseGuards(AuthGuard)
+    @UseGuards(AuthGuard)
     @Put(':id')
     editJob(@Request() req, @Param('id', ParseIntPipe) id: number, @Body() jobParam?: createJobDto) {
         const userId = req.user ? req.user.uid : null;
         return this.jobService.editJob(id, jobParam, userId)
     }
 
-    // @UseGuards(AuthGuard)
+    @UseGuards(AuthGuard)
     @Delete(':id')
     deleteJob(@Request() req, @Param('id', ParseIntPipe) id: number) {
         const userId = req.user ? req.user.uid : null;

@@ -35,9 +35,9 @@ export class JobService {
 
     async createJob(jobParam: createJobDto, ownerId?: number,) {
         const owner = await this.userRepo.findOneBy({ id: ownerId })
-        // if (!owner) {
-        //     throw new HttpException('Record not found.', HttpStatus.NOT_FOUND);
-        // }
+        if (!owner) {
+            throw new HttpException('Record not found.', HttpStatus.NOT_FOUND);
+        }
 
         const job = this.jobRepo.create({
             name: jobParam.name,
@@ -53,9 +53,9 @@ export class JobService {
 
     async editJob(jobId: number, jobParam: createJobDto, ownerId?: number,) {
         const owner = await this.userRepo.findOneBy({ id: ownerId })
-        // if (!owner) {
-        //     throw new HttpException('Record not found.', HttpStatus.NOT_FOUND);
-        // }
+        if (!owner) {
+            throw new HttpException('Record not found.', HttpStatus.NOT_FOUND);
+        }
 
         const job = await this.jobDetail(jobId)
         // TODO: check owner access before edit
