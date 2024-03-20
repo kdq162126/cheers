@@ -13,8 +13,9 @@ export class JobService {
         private readonly userRepo: Repository<UserEntity>,
     ) { }
 
-    async listJobs() {
+    async listJobs(status?: string) {
         const jobs = await this.jobRepo.find({
+            where: { status: status },
             relations: { owner: true }
         })
         return jobs

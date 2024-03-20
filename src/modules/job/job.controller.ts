@@ -1,4 +1,4 @@
-import { Body, Controller, Delete, Get, Param, ParseIntPipe, Post, Put, Request, UseGuards } from "@nestjs/common";
+import { Body, Controller, Delete, Get, Param, ParseIntPipe, Post, Put, Query, Request, UseGuards } from "@nestjs/common";
 import { JobService } from "./job.service";
 import { createJobDto } from "./job.dto";
 import { AuthGuard } from "src/guards/auth.guard";
@@ -10,7 +10,10 @@ export class JobController {
     ) { }
 
     @Get('')
-    listJobs(@Request() req) {
+    listJobs(@Request() req, @Query('status') status?: string) {
+        if (status) {
+            return this.jobService.listJobs(status)
+        }
         return this.jobService.listJobs()
     }
 
