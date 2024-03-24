@@ -1,1 +1,1 @@
-# hackathon-backend
+# Cheers!
